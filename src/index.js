@@ -8,13 +8,25 @@ import { CartProvider } from "./context/cart_context";
 import { UserProvider } from "./context/user_context";
 import { Auth0Provider } from "@auth0/auth0-react";
 
+//mihiryadav.us.auth0.com
+//5NaqUJAJURabgPKbmid5dQ8q1egQ0x7U
+
 ReactDOM.render(
-	<ProductsProvider>
-		<FilterProvider>
-			<CartProvider>
-				<App />
-			</CartProvider>
-		</FilterProvider>
-	</ProductsProvider>,
+	<Auth0Provider
+		domain='mihiryadav.us.auth0.com'
+		clientId='5NaqUJAJURabgPKbmid5dQ8q1egQ0x7U'
+		redirectUri={window.location.origin}
+		cacheLocation='localstorage'
+	>
+		<UserProvider>
+			<ProductsProvider>
+				<FilterProvider>
+					<CartProvider>
+						<App />
+					</CartProvider>
+				</FilterProvider>
+			</ProductsProvider>
+		</UserProvider>
+	</Auth0Provider>,
 	document.getElementById("root")
 );
